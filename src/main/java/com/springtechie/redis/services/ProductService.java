@@ -19,9 +19,17 @@ public class ProductService {
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
+    // client request with id
+    // it checks in the redis db with the given id.
+    // if data is present it return from redis.
+    // if not present then it goes to main db or actual db.
+    // just before returning the data to client , it update the redis db.
+    // {key : data}
+    // 120 : data
 
-    @Cacheable(value = "productcache",key = "#id",unless = "#result==null",condition = "#id>0")
-    public Product getProduct(int id) {
+
+    @Cacheable(value = "productcache",key = "#id",unless = "#result==null",condition = "#id>10")
+    public Product getProduct(int id) { // 1 : data
         System.out.println("Hello");
         Optional<Product> product = productRepository.findById(id);
             return product.get();
@@ -44,7 +52,6 @@ public class ProductService {
     @CachePut(value = "productcache",key = "#product.id")
     public Product updateProduct(Product product) {
        return productRepository.save(product);
-
     }
 
     // to delete all data from cache

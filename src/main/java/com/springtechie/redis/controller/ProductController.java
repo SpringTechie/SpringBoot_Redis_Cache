@@ -17,6 +17,7 @@ public class ProductController {
         this.productService = productService;
         this.cacheManager = cacheManager;
     }
+
     @GetMapping("/get/id/{id}")
     public Product getProduct(@PathVariable int id) {
         Product product = productService.getProduct(id);
