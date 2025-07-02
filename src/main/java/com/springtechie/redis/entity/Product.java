@@ -48,6 +48,6 @@ public class Product implements Serializable {
     }
 
     public Product() {
-
+        System.out.println("hello");
     }
 }
