@@ -8,6 +8,7 @@ class SpringBootRedisCacheApplicationTests {
 
 	@Test
 	void contextLoads() {
+		assert 1==2;
 	}
 
 }
