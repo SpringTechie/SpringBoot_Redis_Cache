@@ -19,7 +19,7 @@ public class ProductController {
     }
 
     @GetMapping("/get/id/{id}")
-    public Product getProduct(@PathVariable int id) {
+    public Product getProductById(@PathVariable int id) {
         Product product = productService.getProduct(id);
         System.out.println(product.getId());
         return product;
