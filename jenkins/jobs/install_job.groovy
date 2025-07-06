@@ -18,7 +18,5 @@ job('SpringBoot Maven Install Jenkins JOB using DSL Script') {
             rootPOM('pom.xml')
         }
     }
-    publishers {
-        junit('target/surefire-reports/*.xml')
-    }
+
 }
