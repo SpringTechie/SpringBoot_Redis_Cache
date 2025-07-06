@@ -14,9 +14,6 @@ job('SpringBoot Maven Compile Jenkins JOB using DSL Script') {
            branches(constants.BRANCH)
        }
     }
-    triggers {
-        githubPush()
-    }
     steps {
         maven {
             goals('clean compile')
