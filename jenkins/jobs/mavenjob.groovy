@@ -14,7 +14,7 @@ job('SpringBoot Jenkins JOB using DSL Script') {
     }
     steps {
         maven {
-            goals('clean install')
+            goals('clean compile')
             mavenInstallation('M3')
             rootPOM('pom.xml')
 
