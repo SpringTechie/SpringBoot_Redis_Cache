@@ -1,0 +1,23 @@
+job('SpringBoot Jenkins JOB using DSL') {
+
+    description('Demo DSL script to create maven job')
+    scm {
+       git {
+           remote {
+               url('https://github.com/SpringTechie/SpringBoot_Redis_Cache.git')
+           }
+           branches('*/main')
+       }
+    }
+    triggers {
+        githubPush()
+    }
+    steps {
+        maven {
+            goals('clean install')
+            mavenInstallation('M3')
+            rootPOM('pom.xml')
+
+        }
+    }
+}
