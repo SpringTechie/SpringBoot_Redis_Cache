@@ -21,3 +21,4 @@ job('SpringBoot Jenkins JOB using DSL Script') {
         }
     }
 }
+queue('SpringBoot Jenkins JOB using DSL Scrip')
