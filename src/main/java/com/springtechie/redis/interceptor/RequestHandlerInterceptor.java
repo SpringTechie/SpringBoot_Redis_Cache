@@ -15,7 +15,7 @@ public class RequestHandlerInterceptor implements HandlerInterceptor {
 //        System.out.println(request.getRequestURL());
 //        System.out.println(request.getMethod());
 //        System.out.println(request.getContentType());
-        System.out.println(request.getContextPath())
+//        System.out.println(request.getContextPath())
         return true;
     }
 

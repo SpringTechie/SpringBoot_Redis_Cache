@@ -4,9 +4,9 @@ job('SpringBoot Maven Compile Jenkins JOB using DSL Script') {
     scm {
        git {
            remote {
-               url('https://github.com/SpringTechie/SpringBoot_Redis_Cache.git')
+               url(constants.REPO_URL)
            }
-           branches('*/main')
+           branches(constants.BRANCH)
        }
     }
     triggers {
@@ -15,7 +15,7 @@ job('SpringBoot Maven Compile Jenkins JOB using DSL Script') {
     steps {
         maven {
             goals('clean compile')
-            mavenInstallation('M3')
+            mavenInstallation(constants.MAVEN_TOOL)
             rootPOM('pom.xml')
 
         }
