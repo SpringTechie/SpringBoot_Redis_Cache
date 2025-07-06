@@ -1,4 +1,4 @@
-job('SpringBoot Jenkins JOB using DSL Script') {
+job('SpringBoot Jenkins JOB using DSL Script Demo') {
 
     description('Demo DSL script to create maven job')
     scm {
