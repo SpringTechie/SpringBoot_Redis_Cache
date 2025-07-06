@@ -1,6 +1,6 @@
-job('SpringBoot Jenkins JOB using DSL Script') {
+job('SpringBoot Maven Compile Jenkins JOB using DSL Script') {
 
-    description('Demo DSL script to create maven job')
+    description('SpringBoot_Redis_Cache compile job')
     scm {
        git {
            remote {
@@ -20,5 +20,9 @@ job('SpringBoot Jenkins JOB using DSL Script') {
 
         }
     }
+
+    publishers {
+        downstream('SpringBoot Maven Install Jenkins JOB using DSL Script','SUCCESS')
+    }
 }
-queue('SpringBoot Jenkins JOB using DSL Script')
+queue('SpringBoot Maven Compile Jenkins JOB using DSL Script')
