@@ -55,4 +55,9 @@ public class ProductController {
         System.out.println(productcache.getName());
     }
 
+    @GetMapping("/demo/jenkins")
+    public String demo() {
+        return "cache deleted successfully";
+    }
+
 }
