@@ -1,3 +1,4 @@
+evaluate(readFileFromWorkspace('jenkins/jobs/BuildConstants.groovy'))
 job('SpringBoot Maven Compile Jenkins JOB using DSL Script') {
 
     description('SpringBoot_Redis_Cache compile job')

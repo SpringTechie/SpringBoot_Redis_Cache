@@ -1,4 +1,4 @@
-
+evaluate(readFileFromWorkspace('jenkins/jobs/BuildConstants.groovy'))
 job('SpringBoot Maven Install Jenkins JOB using DSL Script') {
 
     description('SpringBoot_Redis_Cache install job')
