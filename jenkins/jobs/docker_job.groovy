@@ -14,7 +14,7 @@ job('Job to create docker-image') {
 
     steps {
         // Copy the built JAR from the previous job
-        copyArtifacts('SpringBoot-Maven-Install') {
+        copyArtifacts('SpringBoot Maven Install Jenkins JOB using DSL Script') {
             includePatterns('target/*.jar')
             buildSelector {
                 latestSuccessful(true)
