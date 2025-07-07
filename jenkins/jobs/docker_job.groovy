@@ -1,4 +1,6 @@
-evaluate(readFileFromWorkspace('jenkins/jobs/constants.groovy'))
+def constants = evaluate(
+        readFileFromWorkspace('jenkins/jobs/constants.groovy')
+)
 job('Job to create docker-image') {
     description('Jenkins Job to create Docker file')
     scm{
