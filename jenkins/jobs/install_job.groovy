@@ -21,5 +21,8 @@ job('SpringBoot Maven Install Jenkins JOB using DSL Script') {
             rootPOM('pom.xml')
         }
     }
+    publihsers {
+        archieveArtifacts('target/*.jar')
+    }
 
 }
