@@ -21,9 +21,9 @@ job('SpringBoot Maven Install Jenkins JOB using DSL Script') {
             rootPOM('pom.xml')
         }
     }
-    publihsers {
-        archieveArtifacts('target/*.jar')
-        downstream('Job to create docker-image','SUCCESS')
+    publishers {
+        archiveArtifacts('target/*.jar')
+        downstream('Job to create docker-image', 'SUCCESS')
     }
 
 }

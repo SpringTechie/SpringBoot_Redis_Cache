@@ -28,14 +28,10 @@ job('Job to create docker-image') {
     }
     wrappers {
         credentialsBinding {
-            // 1st arg = env var for username
-            // 2nd arg = env var for password / token
-            // 3rd arg = credentials‑ID stored in Jenkins
             usernamePassword('DOCKER_USERNAME',
                     'DOCKER_PASSWORD',
                     'docker-hub-creds')
         }
-        // (optionally) add static env vars here:
         environmentVariables {
             env('IMAGE_NAME', 'springboot-redis')
         }
