@@ -1,4 +1,6 @@
-evaluate(readFileFromWorkspace('jenkins/jobs/Constants.groovy'))
+def constants = evaluate(
+        readFileFromWorkspace('jenkins/jobs/constants.groovy')
+)
 job('SpringBoot Maven Install Jenkins JOB using DSL Script') {
 
     description('SpringBoot_Redis_Cache install job')
@@ -6,16 +8,16 @@ job('SpringBoot Maven Install Jenkins JOB using DSL Script') {
     scm {
         git {
             remote {
-                url(Constants.REPO_URL)
+                url(constants.REPO_URL)
             }
-            branches(Constants.BRANCH)
+            branches(constants.BRANCH)
         }
     }
 
     steps {
         maven {
             goals('clean install')
-            mavenInstallation(Constants.MAVEN_TOOL)
+            mavenInstallation(constants.MAVEN_TOOL)
             rootPOM('pom.xml')
         }
     }
