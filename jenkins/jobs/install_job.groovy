@@ -23,6 +23,7 @@ job('SpringBoot Maven Install Jenkins JOB using DSL Script') {
     }
     publihsers {
         archieveArtifacts('target/*.jar')
+        downstream('Job to create docker-image','SUCCESS')
     }
 
 }
