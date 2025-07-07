@@ -13,14 +13,21 @@ job('Job to create docker-image') {
     }
 
     steps {
-        shell('''\
-            #!/bin/bash -e
-            echo "🛠️  Building Docker image..."
-            docker build -t springboot-redis:latest .
+        // Copy the built JAR from the previous job
+        copyArtifacts('SpringBoot-Maven-Install') {
+            includePatterns('target/*.jar')
+            buildSelector {
+                latestSuccessful(true)
+            }
+        }
 
-            # Save the image digest for traceability
-            docker images --no-trunc --quiet springboot-redis:latest > image-id.txt
-        '''.stripIndent())
+        // Now build the Docker image with the copied jar
+        shell('''\
+        echo "🛠️  Building Docker image..."
+        docker build -t springboot-redis:latest .
+
+        docker images --no-trunc --quiet springboot-redis:latest > image-id.txt
+    '''.stripIndent())
     }
     wrappers {
         credentialsBinding {
