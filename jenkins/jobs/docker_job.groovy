@@ -13,7 +13,10 @@ job('Job to create docker-image') {
     }
 
     steps {
-        shell('''\
+        steps {
+            shell('''\
+        export PATH=/usr/local/bin:$PATH
+
         echo "🛠️ Logging in to Docker Hub..."
         echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
@@ -25,6 +28,7 @@ job('Job to create docker-image') {
 
         docker logout
     '''.stripIndent())
+        }
     }
     wrappers {
         credentialsBinding {
