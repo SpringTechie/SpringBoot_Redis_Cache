@@ -13,22 +13,14 @@ job('Job to create docker-image') {
     }
 
     steps {
-        steps {
-            shell('''\
-        export PATH=/usr/local/bin:$PATH
+        shell('''\
+            #!/bin/bash -e
+            echo "🛠️  Building Docker image..."
+            docker build -t springboot-redis:latest .
 
-        echo "🛠️ Logging in to Docker Hub..."
-        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-
-        echo "🛠️ Building Docker image..."
-        docker build -t springboot-redis:latest .
-
-        echo "📤 Pushing to Docker Hub..."
-        docker push springboot-redis:latest
-
-        docker logout
-    '''.stripIndent())
-        }
+            # Save the image digest for traceability
+            docker images --no-trunc --quiet springboot-redis:latest > image-id.txt
+        '''.stripIndent())
     }
     wrappers {
         credentialsBinding {
